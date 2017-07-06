@@ -44,38 +44,38 @@ public class ListNode {
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode resultNode = null;
         boolean addDigit = false;
-        while(true) {
+        while (true) {
             int element = l1.getLast() + l2.getLast();
-            if(element % 10 == element) {
-                if(addDigit) element++;
-                if(resultNode == null) {
+            if (element % 10 == element) {
+                if (addDigit) element++;
+                if (resultNode == null) {
                     resultNode = new ListNode(element);
                 } else {
                     resultNode.addLast(element);
                 }
-                if(l1.next == null || l2.next == null) break;
+                if (l1.next == null || l2.next == null) break;
                 l1.deleteLast();
                 l2.deleteLast();
             } else {
-                if(addDigit) element++;
-                if(resultNode == null) {
+                if (addDigit) element++;
+                if (resultNode == null) {
                     resultNode = new ListNode(element % 10);
                 } else {
                     resultNode.addLast(element % 10);
                 }
                 addDigit = true;
-                if(l1.next == null || l2.next == null) break;
+                if (l1.next == null || l2.next == null) break;
                 l1.deleteLast();
                 l2.deleteLast();
             }
         }
-        while(l1.next != null) {
-                l1.deleteLast();
-                resultNode.addLast(l1.getLast());
+        while (l1.next != null) {
+            l1.deleteLast();
+            resultNode.addLast(l1.getLast());
         }
-        while(l2.next != null) {
-                l2.deleteLast();
-                resultNode.addLast(l2.getLast());
+        while (l2.next != null) {
+            l2.deleteLast();
+            resultNode.addLast(l2.getLast());
         }
         return resultNode;
     }
